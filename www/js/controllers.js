@@ -1,4 +1,4 @@
-var app = angular.module('starter.controllers', [])
+var app = angular.module('peoples_congress.controllers', [])
 
 app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -46,6 +46,15 @@ app.controller('HomeCtrl', function($scope){
 
 });
 
-app.controller('CongressCtrl', function($scope) {
+app.controller('CongressCtrl', function($scope, Congress) {
+   Congress.getAllLegislators();
+  // Congress.getLegislatorByZipcode('90049');
+  // Congress.getLegislatorByLastName('Sanders');
 
 });
+
+
+// app.service('Congress', function($http){
+
+
+// });
