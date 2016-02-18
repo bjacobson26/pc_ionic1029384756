@@ -63,10 +63,11 @@
               <p>
                 <a href="#" class="subdued">Nays: {{nays}}</a>
                 <a href="#" class="subdued">Yays: {{yays}}</a>
+                <a ng-click="openComments(singleBill)" class="subdued hover">Comments ({{comments.length}})</a>
               </p>
             </div>
 
-            <div class="item">
+            <div class="item" ng-show="viewComments == false">
               <h1 ng-show="siggleBill.vetoed" class="red">Vetoed</h1>
               <h3 ng-show="singleBill.enacted" class="green">Enacted</h3>
               <h4 ng-show="singleBill.active" class="green">Active</h4>
@@ -75,11 +76,41 @@
               <h4>Introduced: {{singleBill.introducedOn | date : format : timezone}}</h4>
             </div>
 
-            <div ng-click="viewLink(singleBill.pdf, pdf)" class="button button-block button-positive">
+            <div ng-show="viewComments==true">
+              <div class="list">
+                <label class="item item-input">
+                  <textarea placeholder="Write you comment here..."></textarea>
+                </label>
+                <button class="button button-block button-positive">
+                  Submit
+                </button>
+                <div class="list" ng-repeat="comment in comments">
+                  <div class="label">
+                    <h4 class="item-divider">{{comment.user}}</h4>
+                  </div>
+                  <div>
+                    <p>{{comment.text}}</p>
+                  </div>
+                  <div class="button-bar">
+                    <div class="button">{{comment.dislikes}}</div>
+                    <div class="button">{{comment.likes}}</div>
+                    <div class="button">{{comment.stars}}</div>
+                  </div>
+                  <div class="button-bar">
+                    <a ng-click="unlikeComment(comment)" id="unlike_comment" class="button"><i class="ion-thumbsdown comment-likes"></i></a class="button">
+                    <a ng-click="likeComment(comment)" id="like_comment" class="button"><i class="ion-thumbsup comment-likes"></i></a class="button">
+                    <a ng-click="likeComment(comment)" id="star" class="button"><i class="ion-android-star comment-likes"></i></a class="button">
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div ng-show="viewComments == false" ng-click="viewLink(singleBill.pdf, pdf)" class="button button-block button-positive">
               Read Full Text 
             </div>
 
-            <div class="button-bar">
+            <div class="button-bar" ng-show="viewComments == false">
               <a class="button" ng-click="downvote()"><i id="downvote" class="ion-thumbsdown vote-button"></i></a>
               <a class="button" ng-click="upvote()"><i id="upvote" class="ion-thumbsup vote-button"></i></a>
             </div>

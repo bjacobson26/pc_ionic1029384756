@@ -3,6 +3,44 @@
   font-size: 50px;
 }
 
+.gold {
+  color: gold;
+}
+
+.comment-likes {
+  font-size: 2em;
+}
+
+.star {
+  font-size: 4em;
+}
+.small {
+  font-size: 1em;
+}
+
+
+.italic {
+  font-style: italic;
+}
+
+.go-down {
+  padding-top: 10px;
+}
+
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.no_border {
+  border: none;
+}
+
+.smaller {
+  font-size: 1em;
+}
+
 .center {
   text-align: center;
 }
