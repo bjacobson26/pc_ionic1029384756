@@ -47,9 +47,49 @@ app.controller('HomeCtrl', function($scope){
 });
 
 app.controller('CongressCtrl', function($scope, Congress) {
-   Congress.getAllLegislators();
+  // Congress.getAllLegislators();
   // Congress.getLegislatorByZipcode('90049');
   // Congress.getLegislatorByLastName('Sanders');
+  // Congress.getCongressionalDistrict('90210'); 
+
+  $scope.singleBillView = false;
+
+  Congress.getRecentActiveBills().then(function(data){
+    $scope.bills = data;
+  });
+
+  var vote = -1;
+
+  $scope.upvote = function(){
+    if(vote == -1 || vote == 0){ 
+      vote = 1;
+      document.getElementById('upvote').className = 'ion-thumbsup vote-button blue';
+      document.getElementById('downvote').className = 'ion-thumbsdown vote-button';
+    }
+    else {
+      vote = -1;
+      document.getElementById('upvote').className = 'ion-thumbsup vote-button';
+    }
+  };
+
+  $scope.downvote = function(){
+    if(vote == -1 || vote == 1){ 
+      vote = 0;
+      document.getElementById('downvote').className = 'ion-thumbsdown vote-button red'
+      document.getElementById('upvote').className = 'ion-thumbsup vote-button';
+    }
+    else {
+      vote = -1;
+      document.getElementById('downvote').className = 'ion-thumbsdown vote-button';
+    }
+  };
+  
+  $scope.viewBill = function(bill){
+    $scope.singleBillView = true;
+    $scope.singleBill = bill;
+    console.log($scope.singleBill);
+  };
+
 
 });
 

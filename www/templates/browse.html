@@ -1,4 +1,97 @@
-<ion-view view-title="Browse">
+<ion-view view-title="Recent Bills">
   <ion-content>
+    <div ng-controller="CongressCtrl">
+
+
+      <div ng-show="singleBillView == false"ng-repeat="bill in bills | orderBy: '-lastActionAt'" class="card">
+        <div ng-click="viewBill(bill)">
+          <div class="item item-text-wrap">
+            <p>{{bill.officialTitle}}</p>
+            <div>
+            <span class="sponsor">{{bill.sponsor}}</span>
+            </div>
+            <h3 ng-show="bill.enacted" class="green">Enacted</h3>
+          </div>
+        </div>
+      </div>
+
+      <div ng-show="singleBillView == true">
+        <div>
+          <div class="list card">
+            
+            <div class="button-bar">
+              <p class="button">House:
+                <span 
+                  class="green" ng-show="singleBill.housePassageResult == 'pass'">
+                  Passed
+                </span>
+                <span
+                  class="red" 
+                  ng-show="singleBill.housePassageResult == 'fail'">
+                  Failed
+                </span>
+                <span
+                  class="yellow" 
+                  ng-show="singleBill.housePassageResult != 'fail' && singleBill.housePassageResult != 'pass'">
+                  Pending
+                </span>
+              </p>
+              <p class="button">Senate:
+                <span 
+                  class="green" ng-show="singleBill.senatePassageResult == 'pass'">
+                  Passed
+                </span>
+                <span
+                  class="red" 
+                  ng-show="singleBill.senatePassageResult == 'fail'">
+                  Failed
+                </span>
+                <span
+                  class="yellow" 
+                  ng-show="singleBill.senatePassageResult != 'fail' && singleBill.senatePassageResult != 'pass'">
+                  Pending
+                </span>
+              </p>
+              
+            </div>
+            
+            <div class="item item-body">
+              <p>
+                {{singleBill.officialTitle}}
+              </p>
+              <p>{{singleBill.sponsor}}</p>
+              <p>
+                <a href="#" class="subdued">1 Like</a>
+                <a href="#" class="subdued">5 Comments</a>
+              </p>
+            </div>
+
+            <div class="item">
+              <h1 ng-show="siggleBill.vetoed" class="red">Vetoed</h1>
+              <h3 ng-show="singleBill.enacted" class="green">Enacted</h3>
+              <h4 ng-show="singleBill.active" class="green">Active</h4>
+              <h4 ng-show="singleBill.awaitingSignature" class="green">Awaiting Signature</h4>
+              <h4>Last Action: {{singleBill.lastActionAt | date : format : timezone}}</h4>
+              <h4>Introduced: {{singleBill.introducedOn | date : format : timezone}}</h4>
+            </div>
+
+            <a href="{{singleBill.html}}" class="button button-block button-positive">
+              Read Full Text 
+            </a>
+
+            <div class="button-bar">
+              <a class="button" ng-click="downvote()"><i id="downvote" class="ion-thumbsdown vote-button"></i></a>
+              <a class="button" ng-click="upvote()"><i id="upvote" class="ion-thumbsup vote-button"></i></a>
+            </div>
+
+
+           
+
+          </div>
+        </div>
+        <i id="back_button" class="ion-arrow-left-a" ng-click="singleBillView = false"></i>
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>
