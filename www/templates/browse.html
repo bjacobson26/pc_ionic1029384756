@@ -75,9 +75,9 @@
               <h4>Introduced: {{singleBill.introducedOn | date : format : timezone}}</h4>
             </div>
 
-            <a href="{{singleBill.html}}" class="button button-block button-positive">
+            <div ng-click="viewLink(singleBill.pdf, pdf)" class="button button-block button-positive">
               Read Full Text 
-            </a>
+            </div>
 
             <div class="button-bar">
               <a class="button" ng-click="downvote()"><i id="downvote" class="ion-thumbsdown vote-button"></i></a>
