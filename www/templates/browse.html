@@ -97,9 +97,21 @@
                     <div class="button">{{comment.stars}}</div>
                   </div>
                   <div class="button-bar">
-                    <a ng-click="unlikeComment(comment)" id="unlike_comment" class="button"><i class="ion-thumbsdown comment-likes"></i></a class="button">
-                    <a ng-click="likeComment(comment)" id="like_comment" class="button"><i class="ion-thumbsup comment-likes"></i></a class="button">
-                    <a ng-click="likeComment(comment)" id="star" class="button"><i class="ion-android-star comment-likes"></i></a class="button">
+                    <a 
+                      ng-click="unlikeComment(comment, comments.indexOf(comment))" 
+                      id="unlike_button_{{comment.id}}"
+                      class="button">
+                      <i class="ion-thumbsdown comment-likes">
+                      </i>
+                    </a class="button">
+                    <a 
+                      ng-click="likeComment(comment, comments.indexOf(comment))" 
+                      id="like_button_{{comment.id}}"
+                      class="button">
+                      <i class="ion-thumbsup comment-likes">
+                      </i>
+                    </a class="button">
+                    <a ng-click="giveStar(comment)" id="star_{{comment.id}}" class="button"><i class="ion-android-star comment-likes"></i></a class="button">
                   </div>
                 </div>
                 
@@ -114,6 +126,7 @@
               <a class="button" ng-click="downvote()"><i id="downvote" class="ion-thumbsdown vote-button"></i></a>
               <a class="button" ng-click="upvote()"><i id="upvote" class="ion-thumbsup vote-button"></i></a>
             </div>
+
 
 
            

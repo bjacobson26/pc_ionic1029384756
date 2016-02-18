@@ -51,66 +51,102 @@ app.controller('CongressCtrl', function($scope, Congress) {
 
   var commentScore = 'undecided';
 
-  $scope.likeComment = function(comment){
-    if(commentScore == 'undecided'){
-      commentScore = 'upvote';
+
+  var toggleUpvote = function(comment, commentScore){
+    thumbsUpId = 'like_button_' + comment.id
+    thumbsDownId = 'unlike_button_' + comment.id
+    thumbsup = document.getElementById(thumbsUpId);
+    thumbsdown = document.getElementById(thumbsDownId);
+    if(thumbsup.style.color != "blue" && thumbsdown.style.color != "red"){
       comment.likes++;
-      document.getElementById('like_comment').className += ' blue';
+      thumbsup.style.color = "blue";
+      thumbsdown.style.color = "black";
     }
-    else if(commentScore == 'downvote'){
-      commentScore = 'upvote';
+    else if(thumbsup.style.color == "blue"){
+      comment.likes--;
+      thumbsup.style.color = "black";
+    }
+    if(thumbsup.style.color != "blue" && thumbsdown.style.color == "red"){
       comment.likes++;
       comment.dislikes--;
-      document.getElementById('like_comment').className += ' blue';
-      document.getElementById('unlike_comment').className = 'button';
-    }
-    else if(commentScore == 'upvote'){
-      commentScore = "undecided";
-      comment.likes--;
-      document.getElementById('like_comment').className = 'button';
+      thumbsup.style.color = "blue";
+      thumbsdown.style.color = "black";
     }
   }
 
-  $scope.unlikeComment = function(comment){
-    if(commentScore == 'undecided'){
-      commentScore = 'downvote';
+  var toggleDownvote = function(comment){
+    thumbsUpId = 'like_button_' + comment.id
+    thumbsDownId = 'unlike_button_' + comment.id
+    thumbsup = document.getElementById(thumbsUpId);
+    thumbsdown = document.getElementById(thumbsDownId);
+    if(thumbsdown.style.color != "red" && thumbsup.style.color != "blue"){
       comment.dislikes++;
-      document.getElementById('unlike_comment').className += ' red';
+      thumbsdown.style.color = "red";
+      thumbsup.style.color = "black";
     }
-    else if(commentScore == 'downvote'){
+    else if(thumbsdown.style.color == "red"){
       comment.dislikes--;
-      commentScore = 'undecided';
-      document.getElementById('unlike_comment').className = 'button';
+      thumbsdown.style.color = "black";
     }
-    else if(commentScore == 'upvote'){
-      commentScore = 'downvote';
+    if(thumbsdown.style.color != "red" && thumbsup.style.color == "blue"){
       comment.likes--;
       comment.dislikes++;
-      document.getElementById('like_comment').className = 'button';
-      document.getElementById('unlike_comment').className += ' red';
+      thumbsup.style.color = "black";
+      thumbsdown.style.color = "red";
     }
+  }
+
+  $scope.giveStar = function(comment){
+    starid = 'star_' + comment.id
+    star = document.getElementById(starid);
+    if(star.style.color == "gold"){
+      comment.stars--;
+      star.style.color = "black";
+      star.style.background =  "";
+    }
+    else {
+      guilded = true;
+      comment.stars++;
+      star.style.color = "gold";
+    }
+
+
+  }
+
+  $scope.likeComment = function(comment){
+    toggleUpvote(comment);
+  }
+
+  $scope.unlikeComment = function(comment){
+    toggleDownvote(comment, commentScore);
   }
   
   $scope.viewComments = false;
   $scope.comments = [
     { 
+      'id': '1',
       'user': 'XxPoopsBaldEaglezxX', 
       'text': "We worship an awesome God in the Blue States, and we don't like federal agents poking around in our libraries in the Red States. Now, I don't believe that Senator McCain doesn't care what's going on in the lives of Americans. You're on your own. You can't truly stand up for Georgia when you've strained our oldest alliances. The fear and anger that it provoked was understandable, but in some cases, it led us to act contrary to our ideals. All these things must be done in partnership.",
       'likes': 3640,
-      'dislikes': 3253
+      'dislikes': 3253,
+      'stars': 0
     },
     {
+      'id': '2',
       'user': 'LiberalCat', 
       'text': "The hope of a skinny kid with a funny name who believes that America has a place for him, too. Hope in the face of difficulty. They weren't simply a religious leader's effort to speak out against perceived injustice. What the nay-sayers don't understand is that this election has never been about me. Tomorrow, I will visit Buchenwald, which was part of a network of camps where Jews were enslaved, tortured, shot and gassed to death by the Third Reich.",
       'likes': 245,
-      'dislikes': 6432
+      'dislikes': 6432,
+      'stars': 0
     },
 
     { 
+      'id': '3',
       'user': 'BernieSandersOffical', 
       'text': "You've got the top 400 Americans owning more wealth than the bottom 150 million Americans. Most folks do not think that is right.",
       'likes': '98999',
-      'dislikes': 3 
+      'dislikes': 3,
+      'stars': 13
     }
   ];
   $scope.openComments = function(){
