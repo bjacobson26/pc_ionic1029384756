@@ -48,6 +48,9 @@ app.controller('HomeCtrl', function($scope){
 
 app.controller('CongressCtrl', function($scope, Congress) {
 
+  $scope.yays = 0;
+  $scope.nays = 0;
+
   $scope.viewLink = function(url, link_type) {
     if (ionic.Platform.isAndroid()) {
       if (link_type !== undefined && link_type !== null) {
@@ -70,30 +73,42 @@ app.controller('CongressCtrl', function($scope, Congress) {
     $scope.bills = data;
   });
 
-  var vote = -1;
+  var userVote = 'undecided';
 
   $scope.upvote = function(){
-    if(vote == -1 || vote == 0){ 
-      vote = 1;
+    if(userVote == 'undecided' || userVote == 'nay'){ 
+      if(userVote == 'nay'){
+        $scope.nays--;
+      };
+      userVote = 'yay';
+      $scope.yays++;
       document.getElementById('upvote').className = 'ion-thumbsup vote-button blue';
       document.getElementById('downvote').className = 'ion-thumbsdown vote-button';
     }
     else {
-      vote = -1;
+      $scope.yays--;
+      userVote = 'undecided';
       document.getElementById('upvote').className = 'ion-thumbsup vote-button';
     }
+    console.log(userVote);
   };
 
   $scope.downvote = function(){
-    if(vote == -1 || vote == 1){ 
-      vote = 0;
+    if(userVote == 'undecided' || userVote == 'yay'){
+      if(userVote == 'yay'){
+        $scope.yays--;
+      }
+      userVote = 'nay';
+      $scope.nays++;
       document.getElementById('downvote').className = 'ion-thumbsdown vote-button red'
       document.getElementById('upvote').className = 'ion-thumbsup vote-button';
     }
     else {
-      vote = -1;
+      $scope.nays--;
+      userVote = 'undecided';
       document.getElementById('downvote').className = 'ion-thumbsdown vote-button';
     }
+    console.log(userVote);
   };
   
   $scope.viewBill = function(bill){
