@@ -35,14 +35,16 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
 
   $scope.handleRegBtnClick = function() {
-    console.log($scope.registrationForm);
     $auth.submitRegistration($scope.registrationForm)
       .then(function(resp) {
         // handle success response
-        console.log(resp);
+        console.log("SUCCESS");
+        $scope.loginData = { 'email': $scope.registrationForm.email, 'password': $scope.registrationForm.password };
+        $scope.doLogin();
       })
       .catch(function(resp) {
         // handle error response
+        console.log("ERROR:");
         console.log(resp);
       });
   };

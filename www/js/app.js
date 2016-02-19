@@ -25,7 +25,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
  
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'https://test-pc-api.herokuapp.com'
   });
 
 
