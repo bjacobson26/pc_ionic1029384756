@@ -19,7 +19,7 @@
     <ion-content>
       <ion-list>
 
-        <ion-item menu-close ng-click="login()">
+        <ion-item ng-show="!currentUser"menu-close ng-click="login()">
           Login
         </ion-item>
         <ion-item menu-close href="#/app/home">
@@ -31,6 +31,10 @@
         <ion-item menu-close href="#/app/browse">
           Browse
         </ion-item>
+        <ion-item ng-show="currentUser"menu-close ng-click="logout()">
+          Logout
+        </ion-item>
+
 
       </ion-list>
     </ion-content>

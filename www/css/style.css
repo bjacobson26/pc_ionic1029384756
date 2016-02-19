@@ -3,6 +3,19 @@
   font-size: 50px;
 }
 
+.bigger {
+  font-size: 2em;
+}
+
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+.margin-top {
+  margin-top: 1em;
+}
+
 .gold {
   color: gold;
 }
