@@ -3,6 +3,40 @@
   font-size: 50px;
 }
 
+.blue {
+  color: rgb(224,22,43);
+}
+
+.red {
+  color: rgb(0,82,165);
+}
+
+.bar.bar-stable {
+  background-color: #0052A5;
+}
+
+.bar.bar-stable .title {
+  color: #FFFFFF;
+}
+
+.bar-stable .button.button-clear {
+  color: #FFFFFF;
+}
+
+.bar.bar-assertive {
+  border-color: #E0162B;
+  background-color: #E0162B;
+}
+
+.bar.bar-assertive.bar-footer {
+  background-image: linear-gradient(180deg, #E0162B, #E0162B 50%, transparent 50%);
+}
+
+.footer-title {
+  text-align: center;
+}
+
+
 .bigger {
   font-size: 2em;
 }
