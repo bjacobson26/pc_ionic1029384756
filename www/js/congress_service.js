@@ -63,15 +63,14 @@ angular.module('peoples_congress')
       'officialTitle': data.official_title,
       'shortTitle': data.short_title,
       'sponsor': data.sponsor.title + ". " + data.sponsor.first_name + " " + data.sponsor.last_name,
-      'pdf': data.last_version.urls.pdf,
-      'html': data.last_version.urls.html,
+      'pdf': data.urls.pdf,
+      'html': data.urls.html,
       'active': data.history.active,
       'awaitingSignature': data.history.awaiting_signature,
       'enacted': data.history.enacted,
       'housePassageResult': data.history.house_passage_result,
       'senatePassageResult': data.history.senate_passage_result,
-      'vetoed': data.history.vetoed,
-      'versionName': data.last_version.version_name
+      'vetoed': data.history.vetoed
     }
     return bill;
   };

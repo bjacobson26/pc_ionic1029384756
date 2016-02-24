@@ -1,9 +1,34 @@
 <ion-view view-title="Home">
   <ion-content>
-    <div ng-controller="AppCtrl">
+    <div>
+      <button ng-hide="currentUser" ng-click="login()" class="button button-block button-positive">Login</button>
     </div>
-    hello
-    {{ currentUser }}
-    <button ng-click="authUser()">authenticate user</button>
+    <div class="list card" ng-controller="HomeCtrl" ng-show="currentUser">
+      <div class="item item-icon">
+        <i class="ion-person bigger">{{currentUser.email}}</i>
+      </div>
+
+      <div class="button-bar">
+        <a class="button red"><i class="ion ion-thumbsdown">121</i></a>
+        <a class="button blue"><i class="ion ion-thumbsup">1200</i></a>
+        <a class="button gold"><i class="ion ion-star">3</i></a>
+      </div>
+      
+
+      <div class="list card">
+
+        <a href="#" class="item item-icon-left">
+          <i class="icon ion-email"></i>
+          Messages
+        </a>
+
+        <a href="#" class="item item-icon-left">
+          <i class="icon ion-ios-person"></i>
+          Account Info
+        </a>
+
+      </div>
+      {{currentUser}}
+    </div>
   </ion-content>
 </ion-view>

@@ -54,7 +54,7 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
     $auth.submitLogin($scope.loginData)
       .then(function(resp){
-        $scope.currentUser = resp;
+        $rootScope.currentUser = resp;
         $scope.closeLogin();
         $state.go('app.home');
       })
@@ -64,7 +64,7 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
   };
   $scope.logout = function() {
     $auth.signOut();
-    $scope.currentUser = null;
+    $rootScope.currentUser = null;
     $state.go('app.browse')
   };
 
