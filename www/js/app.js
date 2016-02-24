@@ -77,6 +77,15 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
       }
     }
   })
+
+  .state('tabs.about', {
+      url: "/about",
+      views: {
+        'about-tab': {
+          templateUrl: "templates/about.html"
+        }
+      }
+    })
  
   .state('app.bill', {
     url: '/bill/:billId',
