@@ -63,6 +63,8 @@ angular.module('peoples_congress')
       'officialTitle': data.official_title,
       'shortTitle': data.short_title,
       'sponsor': data.sponsor.title + ". " + data.sponsor.first_name + " " + data.sponsor.last_name,
+      'type': data.bill_type,
+      'number': data.number,
       'pdf': data.urls.pdf,
       'html': data.urls.html,
       'active': data.history.active,
