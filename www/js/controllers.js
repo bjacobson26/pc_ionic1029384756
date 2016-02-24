@@ -27,6 +27,7 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
   // Open the login modal
   $scope.login = function() {
+    console.log("hey");
     $scope.modal.show();
   };
 
@@ -70,7 +71,22 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
 });
 
-app.controller('HomeCtrl', function($scope){
+app.controller('HomeCtrl', function($rootScope, $scope){
+
+  $scope.showAccountInfo = false;
+  $scope.toggleAccountInfo = function(){
+    $scope.showAccountInfo = !$scope.showAccountInfo;
+  };
+  $scope.toggleParty = function(){
+    $scope.chooseParty = !$scope.chooseParty;
+  };
+  $scope.toggleGender = function(){
+    $scope.chooseGender = !$scope.chooseGender;
+  };
+
+  $scope.saveUserInfo = function(currentUser){
+    console.log(currentUser);
+  };
 
 });
 

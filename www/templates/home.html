@@ -1,63 +1,84 @@
 <ion-view view-title="Home">
   <ion-content>
-    <div>
-      <button ng-hide="currentUser" ng-click="login()" class="button button-block button-positive">Login</button>
-    </div>
-    <div class="list card" ng-controller="HomeCtrl" ng-show="currentUser">
-      <div class="item item-icon">
-        <i class="ion-person bigger">{{currentUser.email}}</i>
+
+    <div ng-controller="HomeCtrl">
+      <div class="list card" ng-show="currentUser">
+        <div class="item item-icon">
+          <i class="ion-person bigger">{{currentUser.email}}</i>
+        </div>
+
+        <div class="button-bar">
+          <a class="button red"><i class="ion ion-thumbsdown">121</i></a>
+          <a class="button blue"><i class="ion ion-thumbsup">1200</i></a>
+          <a class="button gold"><i class="ion ion-star">3</i></a>
+        </div>
+        
+
+        <div class="list card">
+          <a href="#" class="item item-icon-left">
+            <i class="icon ion-email"></i>
+            Messages
+          </a>
+          <a ng-click="toggleAccountInfo()" class="item item-icon-left">
+            <i class="icon ion-ios-person"></i>
+            Account Info
+          </a>
+
+          <div ng-show="showAccountInfo == true" ng-hide="!showAccountInfo">
+
+            <div class="list">
+
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="{{currentUser.name || 'Name'}}">
+              </label>
+
+              <div ng-show="!chooseParty" ng-hide="chooseParty" ng-click="toggleParty()" class="item bold">
+                {{ currentUser.party || 'Political Party'}}
+              </div>
+              <div ng-show="chooseParty" ng-hide="!chooseParty">
+                <ion-list ng-click="toggleParty()">
+                  <ion-radio ng-model="currentUser.party" ng-value="'Democrat'">Democrat</ion-radio>
+                  <ion-radio ng-model="currentUser.party" ng-value="'Republican'">Republican</ion-radio>
+                  <ion-radio ng-model="currentUser.party" ng-value="'Independent'">Independent</ion-radio>
+                </ion-list>
+              </div>
+
+              <div class="item bold" ng-show="!chooseGender" ng-hide="chooseGender" ng-click="toggleGender()">
+                <div ng-if="currentUser.gender == 'male'">
+                <i class="icon ion-male"></i>
+                </div>
+                <div ng-if="currentUser.gender == 'female'">
+                <i class="icon ion-female"></i>
+                </div>
+                <div ng-show="!currentUser.gender">
+                  Choose Gender
+                </div>
+              </div>
+              <div ng-show="chooseGender" ng-hide="!chooseGender">
+                <ion-list ng-click="toggleGender()">
+                  <ion-radio ng-model="currentUser.gender" ng-value="'male'">Male</ion-radio>
+                  <ion-radio ng-model="currentUser.gender" ng-value="'female'">Female</ion-radio>
+                </ion-list>
+              </div>
+
+              <div class='item bold'>
+                <div>Birthday</div>
+                <input type="date" ng-model="currentUser.dob" >
+              </div>
+
+              <button class="button button-calm center-block margin-top" ng-click="saveUserInfo(currentUser)">Save</button>
+            </div>
+          </div>
+          {{currentUser}}
+
+        </div>
+
       </div>
 
-      <div class="button-bar">
-        <a class="button red"><i class="ion ion-thumbsdown">121</i></a>
-        <a class="button blue"><i class="ion ion-thumbsup">1200</i></a>
-        <a class="button gold"><i class="ion ion-star">3</i></a>
-      </div>
-      
 
-      <div class="list card">
 
-        <a href="#" class="item item-icon-left">
-          <i class="icon ion-email"></i>
-          Messages
-        </a>
+   
 
-        <a href="#" class="item item-icon-left">
-          <i class="icon ion-ios-person"></i>
-          Account Info
-        </a>
-
-      </div>
-      {{currentUser}}
-    </div>
   </ion-content>
 </ion-view>
-<!---<ion-footer-bar align-title="center" class="bar-assertive">
- <div class="buttons">
-    <button class="button">Left Button</button>
-  </div>
-  <h1 class="title">Sign Up!</h1>
-<div class="buttons" ng-click="doSomething()">
-    <button class="button">Right Button</button>
-  </div> 
-
-</ion-footer-bar>
--->
-<ion-tabs class="tabs-icon-top tabs-positive">
-
-        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
-          <ion-nav-view name="home-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
-          <ion-nav-view name="contact-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="About" icon="ion-ios-information" href="about.html">
-          <ion-nav-view name="about-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
-          <ion-nav-view name="contact-tab"></ion-nav-view>
-        </ion-tab>
-</ion-tabs>

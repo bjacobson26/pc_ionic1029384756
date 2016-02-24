@@ -31,21 +31,11 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
 
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-    })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html',
-        controller: 'CongressCtrl'
-      }
-    }
+  .state('app', {
+  url: '/app',
+  abstract: true,
+  templateUrl: 'templates/menu.html',
+  controller: 'AppCtrl'
   })
 
   .state('app.home', {
@@ -76,26 +66,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
         controller: 'CongressCtrl'
       }
     }
-  })
-
-  .state('tabs.about', {
-      url: "/about",
-      views: {
-        'about-tab': {
-          templateUrl: "templates/about.html"
-        }
-      }
-    })
- 
-  .state('app.bill', {
-    url: '/bill/:billId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/bill.html',
-        controller: 'CongressCtrl'
-      }
-    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/browse');
 });

@@ -29,6 +29,25 @@
   </head>
 
   <body ng-app="peoples_congress">
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view>
+    <div ng-controller="AppCtrl" class="tabs tabs-icon-top pc-tabs">
+      <a ng-click="login()" ng-show="!currentUser" class="tab-item">
+        <i class="icon ion-ios-home"></i>
+          Login
+      </a>
+      <a ng-show="currentUser" href="#/app/home" class="tab-item">
+        <i class="icon ion-ios-home"></i>
+          Home 
+      </a>
+      <a class="tab-item" href="#/app/browse">
+        <i class="icon ion-ios-paper-outline"></i>
+        Bills
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-speakerphone"></i>
+        Feed
+      </a>
+    </div>
+    </ion-nav-view>
   </body>
 </html>

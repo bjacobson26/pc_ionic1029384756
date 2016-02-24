@@ -4,12 +4,20 @@
   font-size: 50px;
 }
 
+.bold {
+  font-weight: bold;
+}
 .blue {
   color: rgb(224,22,43);
 }
 
 .red {
   color: rgb(0,82,165);
+}
+
+.pc-tabs {
+  color: white;
+  background-color: rgb(224,22,43);
 }
 
 .bar.bar-stable {
