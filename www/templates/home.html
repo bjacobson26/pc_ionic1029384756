@@ -4,7 +4,7 @@
     <div ng-controller="HomeCtrl">
       <div class="list card" ng-show="currentUser">
         <div class="item item-icon">
-          <i class="ion-person bigger">{{currentUser.email}}</i>
+          <i class="ion-person bigger">{{currentUser.name || currentUser.email}}</i>
         </div>
 
         <div class="button-bar">
@@ -30,7 +30,7 @@
 
               <label class="item item-input item-floating-label">
                 <span class="input-label">Name</span>
-                <input type="text" placeholder="{{currentUser.name || 'Name'}}">
+                <input type="text" ng-model="currentUser.name" placeholder="{{currentUser.name || 'Name'}}">
               </label>
 
               <div ng-show="!chooseParty" ng-hide="chooseParty" ng-click="toggleParty()" class="item bold">
@@ -62,9 +62,14 @@
                 </ion-list>
               </div>
 
-              <div class='item bold'>
+              <div ng-show="chooseDob" ng-hide="!chooseDob" class='item bold'>
                 <div>Birthday</div>
                 <input type="date" ng-model="currentUser.dob" >
+              </div>
+
+              <div ng-show="!chooseDob" ng-hide="!currentUser.dob" ng-click="toggleDob()" class='item bold'>
+                <div>Birthday</div>
+                {{currentUser.dob | date:'MM/dd/yyyy'}}
               </div>
 
               <button class="button button-calm center-block margin-top" ng-click="saveUserInfo(currentUser)">Save</button>

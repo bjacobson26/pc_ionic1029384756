@@ -1,4 +1,5 @@
 var app = angular.module('peoples_congress.controllers', [])
+var USER_UPDATE_ENDPOINT = "https://test-pc-api.herokuapp.com/api/v1/users/"
 
 app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state, $rootScope) {
 
@@ -55,6 +56,8 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
     $auth.submitLogin($scope.loginData)
       .then(function(resp){
+        console.log("Login resp: ");
+        console.log(resp);
         $rootScope.currentUser = resp;
         $scope.closeLogin();
         $state.go('app.home');
@@ -71,9 +74,14 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $auth, $state,
 
 });
 
-app.controller('HomeCtrl', function($rootScope, $scope){
+app.controller('HomeCtrl', function($rootScope, $scope, $http){
 
   $scope.showAccountInfo = false;
+
+  $scope.toggleDob = function(){
+    $scope.chooseDob = !$scope.chooseDob;
+  };
+
   $scope.toggleAccountInfo = function(){
     $scope.showAccountInfo = !$scope.showAccountInfo;
   };
@@ -85,7 +93,15 @@ app.controller('HomeCtrl', function($rootScope, $scope){
   };
 
   $scope.saveUserInfo = function(currentUser){
+    $scope.chooseDob = false;
+    console.log(USER_UPDATE_ENDPOINT + currentUser.id);
+    console.log("BEFORE");
     console.log(currentUser);
+    console.log("AFTER");
+    return $http.patch(USER_UPDATE_ENDPOINT + currentUser.id, currentUser).then(function(resp){
+      console.log(resp);
+      alert("Successfully Saved!");
+    });
   };
 
 });
