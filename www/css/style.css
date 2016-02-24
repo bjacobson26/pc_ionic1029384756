@@ -73,6 +73,25 @@
 
 }
 
+.card-item.ng-enter {
+    -webkit-animation: fadeIn .5s;
+    animation: fadeIn .5s;
+}
+
+.card-item.ng-enter-stagger {
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.card-item.ng-leave {
+    -webkit-animation: fadeOut .5s;
+    animation: fadeOut .5s;
+}
+
 .bigger {
   font-size: 2em;
 }
