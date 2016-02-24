@@ -8,13 +8,23 @@
     <div ng-controller="CongressCtrl">
       <div ng-show="singleBillView == false"ng-repeat="bill in bills | orderBy: '-lastActionAt'" class="card">
         <div ng-click="viewBill(bill)">
-          <div class="item item-text-wrap">
-            <p>{{bill.officialTitle}}</p>
-            <div>
-            <span class="sponsor">{{bill.sponsor}}</span>
-            </div>
-            <h3 ng-show="bill.enacted" class="green">Enacted</h3>
+          <div class="item item-avatar">
+            <img src="img/mcfly.jpg">
+            <h2>{{bill.officialTitle}}</h2>
+            <p>{{bill.sponsor}}</p>
           </div>
+        </div>
+        <div class="item item-body">
+          <!---<img class="full-image" src="delorean.jpg">-->
+          <p>
+            This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+            the content is from a card-body consisting of an image and paragraph text. The footer
+            consists of tabs, icons aligned left, within the card-footer.
+          </p>
+          <p>
+            <a href="#" class="subdued">1 Like</a>
+            <a href="#" class="subdued">5 Comments</a>
+          </p>
         </div>
       </div>
 
