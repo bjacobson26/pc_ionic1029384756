@@ -53,6 +53,14 @@
   background-image: linear-gradient(0deg, #E0162B, #E0162B 50%, transparent 50%);;
 }
 
+.item h2 {
+  text-transform: uppercase;
+}
+
+.item-body h1, .item-body h2, .item-body h3, .item-body h4, .item-body h5, .item-body h6, .item-body p {
+  margin-top: 0;
+}
+
 
 .bigger {
   font-size: 2em;
