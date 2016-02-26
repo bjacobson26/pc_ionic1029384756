@@ -4,7 +4,7 @@
       <button class="button button-clear" ng-click="closeLogin()"><i class="ion-ios-close-outline bigger"></i></button>
     </div>
   </ion-header-bar>
-  <ion-content>
+  <ion-content class="bg1">
     <h2 ng-show="signUp == false" class="title center login-padding">Login</h2>
     <h2 ng-show="signUp == true" class="title center login-padding">Create an Account</h2>
     <form ng-hide="signUp == true" ng-show="!currentUser"ng-submit="doLogin()">
