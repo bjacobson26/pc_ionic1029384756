@@ -114,11 +114,15 @@
 }
 
 .login-padding {
-  padding-top: 50px;
+  padding-top: 80px;
+}
+
+.font350 {
+  font-size: 350%;
 }
 
 .bg1 {
-  background-image: url('../img/bg4.png');
+  background-image: url('../img/bg5.png');
   background-size : 100% auto;
 }
 
@@ -197,4 +201,14 @@
 }
 
 
+@font-face {
+font-family: 'JohnHancock';
+src: url('../img/JohnHancockRegular.ttf')  format('truetype');
+font-weight: bold;
+}
 
+.johnhancock {
+  font-family: 'JohnHancock';
+  src: url('../img/JohnHancockRegular.ttf')  format('truetype');
+  font-weight: bold;
+}
