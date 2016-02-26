@@ -8,11 +8,27 @@
   font-weight: bold;
 }
 .blue {
-  color: rgb(224,22,43);
+  color: rgb(0,82,165);
+}
+
+.blue-bg {
+  background-color: rgb(0,82,165);
 }
 
 .red {
-  color: rgb(0,82,165);
+  color: rgb(224,22,43);
+}
+
+.red-bg {
+  background-color: rgb(224,22,43);
+}
+
+.blue-bg.white-text {
+  color: #FFFFFF;
+}
+
+.red-bg.white-text {
+  color: #FFFFFF;
 }
 
 .pc-tabs {
@@ -90,6 +106,15 @@
 .card-item.ng-leave {
     -webkit-animation: fadeOut .5s;
     animation: fadeOut .5s;
+}
+
+.login-space {
+    width: 80%;
+    margin: auto;
+}
+
+.login-padding {
+  padding-top: 50px;
 }
 
 .bigger {

@@ -5,24 +5,22 @@
     </div>
   </ion-header-bar>
   <ion-content>
-    <h2 ng-show="signUp == false" class="title center">Login</h2>
-    <h2 ng-show="signUp == true" class="title center">Create an Account</h2>
+    <h2 ng-show="signUp == false" class="title center login-padding">Login</h2>
+    <h2 ng-show="signUp == true" class="title center login-padding">Create an Account</h2>
     <form ng-hide="signUp == true" ng-show="!currentUser"ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="text" ng-model="loginData.email">
+      <div class="list login-padding">
+        <label class="item item-input login-space">
+          <input type="text" placeholder="Email" ng-model="loginData.email">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+        <label class="item item-input login-space">
+          <input type="password" placeholder="Password" ng-model="loginData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Sign In</button>
+        <label class="item login-space">
+          <button class="button button-block login-item blue-bg white-text" type="submit">Sign In</button>
         </label>
       </div>
     </form>
-      <button class="button button-calm center-block margin-top" ng-show="signUp == false" ng-click="signUp = true">Create Account</button>
+      <button class="button center-block margin-top red-bg white-text" ng-show="signUp == false" ng-click="signUp = true">Create Account</button>
     <form ng-show="signUp == true"ng-submit="handleRegBtnClick()">
       <div class="list">
         <label class="item item-input">
