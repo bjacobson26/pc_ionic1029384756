@@ -85,8 +85,14 @@
   margin-top: 0;
 }
 
-.item-body{
+.item-q > img:first-child {
+  top: 12px;
+}
 
+.item-q {
+  padding-top: 12px;
+  padding-bottom: 10px;
+  min-height:40px;
 }
 
 .card-item.ng-enter {

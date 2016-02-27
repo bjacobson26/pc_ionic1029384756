@@ -1,10 +1,26 @@
 <ion-view view-title="Recent Bills">
   <ion-content>
+  	<ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
 
     <div ng-controller="CongressCtrl">
-      <div ng-repeat="bill in bills">
-        <p>{{bill.id}}</p>
-        <p>{{bill.title_without_number}}</p>
+      <div ng-repeat="bill in bills" class="card">
+      	<div ng-click="viewBill(bill)">
+	      	<div class=" item item-avatar item-q">
+	            <img src="img/mcfly.jpg">
+	            <h2>{{bill.bill_type_label}} {{bill.id}}</h2>
+	            <p>{{bill.sponsor.name}}</p>
+	        </div>
+	    </div>
+        <div class="item item-body">
+	        <p>{{bill.title_without_number}}</p>
+	        <p>
+	            <a href="#" class="subdued">1 Like</a>
+	            <a href="#" class="subdued">5 Comments</a>
+	        </p>
+        </div>
       </div>
     </div>
 

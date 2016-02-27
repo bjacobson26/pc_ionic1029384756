@@ -133,6 +133,7 @@ app.controller('CongressCtrl', function($scope, $http, Congress) {
       'upvotes': voteData.total_upvotes,
       'downvotes': voteData.total_downvotes,
       'total_votes': voteData.total_votes,
+      'short_title': bill.short_title,
       'title_without_number': bill.title_without_number,
       'district': bill.district,
       'bill_resolution_type': bill.bill_resolution_type,
