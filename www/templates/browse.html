@@ -6,7 +6,7 @@
     </ion-refresher>
 
     <div ng-controller="CongressCtrl">
-      <div ng-show="singleBillView == false"ng-repeat="bill in bills | orderBy: '-lastActionAt'" class="card">
+      <div ng-show="singleBillView == false" ng-repeat="bill in bills" class="card">
         <div ng-click="viewBill(bill)">
           <div class="item item-avatar">
             <img src="img/mcfly.jpg">
@@ -20,7 +20,7 @@
             {{bill.officialTitle}}
           </p>
           <p>
-            <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">Upvotes: {{bill.upvotes}}</a>
             <a href="#" class="subdued">5 Comments</a>
           </p>
         </div>

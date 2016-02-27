@@ -22,7 +22,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $authProvider) {
+.config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider) {
  
   $authProvider.configure({
     apiUrl: 'https://test-pc-api.herokuapp.com'
@@ -34,7 +34,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
   .state('app', {
   url: '/app',
   abstract: true,
-  templateUrl: 'templates/menu.html',
+  templateUrl: './templates/menu.html',
   controller: 'AppCtrl'
   })
 
@@ -42,7 +42,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html',
+        templateUrl: './templates/home.html',
         controller: 'HomeCtrl'
       }
     }
@@ -52,7 +52,7 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login.html',
+        templateUrl: './templates/login.html',
         controller: 'AppCtrl'
       }
     }
@@ -62,11 +62,11 @@ angular.module('peoples_congress', ['ionic', 'peoples_congress.controllers', 'ng
     url: '/browse',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: './templates/browse.html',
         controller: 'CongressCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/browse');
+  $urlRouterProvider.otherwise('app/browse');
 });
