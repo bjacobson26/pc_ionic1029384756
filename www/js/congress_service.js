@@ -41,7 +41,6 @@ angular.module('peoples_congress')
     })
   };
 
-
   this.getRecentActiveBills = function(page){
     var page = page || 1;
     return $http.get(

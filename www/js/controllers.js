@@ -109,6 +109,8 @@ app.controller('HomeCtrl', function($rootScope, $scope, $http){
 
 app.controller('CongressCtrl', function($scope, $http, Congress) {
 
+  $scope.bills = [];
+
   Congress.getRecentActiveBills().then(function(resp){
     $scope.congressApiData = resp;
     for(i=0; i < resp.length; i++){
@@ -121,7 +123,7 @@ app.controller('CongressCtrl', function($scope, $http, Congress) {
       'http://localhost:3000/api/v1/bills/' + bill.id + '/votes')
       .then(function(resp){
         voteData = resp.data;
-        makeBill(bill, voteData);
+        return makeBill(bill, voteData);
       })
   };
 
@@ -131,7 +133,6 @@ app.controller('CongressCtrl', function($scope, $http, Congress) {
       'upvotes': voteData.total_upvotes,
       'downvotes': voteData.total_downvotes,
       'total_votes': voteData.total_votes,
-      'description': bill.description,
       'title_without_number': bill.title_without_number,
       'district': bill.district,
       'bill_resolution_type': bill.bill_resolution_type,
@@ -175,8 +176,7 @@ app.controller('CongressCtrl', function($scope, $http, Congress) {
         'current': bill.sponsor_role.current
       }
     }
-    console.log(bill);
-    return bill
+    $scope.bills.push(bill);
   };
 
 });
