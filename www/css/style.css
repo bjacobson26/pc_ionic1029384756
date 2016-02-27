@@ -8,11 +8,27 @@
   font-weight: bold;
 }
 .blue {
-  color: rgb(224,22,43);
+  color: rgb(0,82,165);
+}
+
+.blue-bg {
+  background-color: rgb(0,82,165);
 }
 
 .red {
-  color: rgb(0,82,165);
+  color: rgb(224,22,43);
+}
+
+.red-bg {
+  background-color: rgb(224,22,43);
+}
+
+.blue-bg.white-text {
+  color: #FFFFFF;
+}
+
+.red-bg.white-text {
+  color: #FFFFFF;
 }
 
 .pc-tabs {
@@ -69,6 +85,46 @@
   margin-top: 0;
 }
 
+.item-body{
+
+}
+
+.card-item.ng-enter {
+    -webkit-animation: fadeIn .5s;
+    animation: fadeIn .5s;
+}
+
+.card-item.ng-enter-stagger {
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.card-item.ng-leave {
+    -webkit-animation: fadeOut .5s;
+    animation: fadeOut .5s;
+}
+
+.login-space {
+    width: 80%;
+    margin: auto;
+}
+
+.login-padding {
+  padding-top: 80px;
+}
+
+.font350 {
+  font-size: 350%;
+}
+
+.bg1 {
+  background-image: url('../img/bg5.png');
+  background-size : 100% auto;
+}
 
 .bigger {
   font-size: 2em;
@@ -145,4 +201,14 @@
 }
 
 
+@font-face {
+font-family: 'JohnHancock';
+src: url('../img/JohnHancockRegular.ttf')  format('truetype');
+font-weight: bold;
+}
 
+.johnhancock {
+  font-family: 'JohnHancock';
+  src: url('../img/JohnHancockRegular.ttf')  format('truetype');
+  font-weight: bold;
+}

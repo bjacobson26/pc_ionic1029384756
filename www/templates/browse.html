@@ -6,7 +6,7 @@
     </ion-refresher>
 
     <div ng-controller="CongressCtrl">
-      <div ng-show="singleBillView == false" ng-repeat="bill in bills" class="card">
+      <div ng-show="singleBillView == false"ng-repeat="bill in bills" class="card card-item item-remove-animate">
         <div ng-click="viewBill(bill)">
           <div class="item item-avatar">
             <img src="img/mcfly.jpg">
@@ -16,7 +16,7 @@
         </div>
         <div class="item item-body">
           <!---<img class="full-image" src="delorean.jpg">-->
-          <p>
+          <p class="johnhancock">
             {{bill.officialTitle}}
           </p>
           <p>
