@@ -41,7 +41,7 @@ angular.module('peoples_congress')
     })
   };
 
-  this.getRecentActiveBills = function(){
+  this.getRecentActiveBills = function(page){
     return $http.get(
       'https://www.govtrack.us/api/v2/bill?congress=114&order_by=-current_status_date'
     ).then(function(resp) {
