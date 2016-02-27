@@ -120,7 +120,7 @@ app.controller('CongressCtrl', function($scope, $http, Congress) {
 
   var getVoteData = function(bill){
     $http.get(
-      'http://localhost:3000/api/v1/bills/' + bill.id + '/votes')
+      'http://test-pc-api.herokuapp.com/api/v1/bills/' + bill.id + '/votes')
       .then(function(resp){
         voteData = resp.data;
         return makeBill(bill, voteData);
